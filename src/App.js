@@ -1,30 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios'
-import UserData from './components/UserData';
+import React, {useState, useEffect} from 'react'
+// import axios from 'axios'
 
+const App = () => {
 
-function App() {
-  const [users, setUsers] = useState([]);
+  const [counter, setCounter] = useState(0)
 
-  useEffect(() => {
-    (async () => {
-      const url = 'https://jsonplaceholder.typicode.com/users'
-
-      const {data:users} = await axios.get(url)     
-      setUsers(users)
-      
-    })()
-
-    
-  },[])
-  
-  
-  return (
+  return(
     <div>
-      <UserData users={users} />
+      <h1>Counter {counter}</h1>
+      <button onClick={() => setCounter(counter + 1)}>+</button>
+      <button onClick={() => setCounter(counter - 1)}>-</button>
     </div>
   )
-  
 }
 
-export default App;
+export default App
